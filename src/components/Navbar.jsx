@@ -44,34 +44,34 @@ const pricingLinks = [
 const megaVariants = {
   hidden: { opacity: 0, y: -12, scale: 0.98, x: '-50%' },
   visible: { opacity: 1, y: 0, scale: 1, x: '-50%', transition: { duration: 0.22, ease: 'easeOut' } },
-  exit:    { opacity: 0, y: -8, scale: 0.98, x: '-50%', transition: { duration: 0.15 } },
+  exit: { opacity: 0, y: -8, scale: 0.98, x: '-50%', transition: { duration: 0.15 } },
 };
 
 const dropdownVariants = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } },
-  exit:    { opacity: 0, y: -6, transition: { duration: 0.12 } },
+  exit: { opacity: 0, y: -6, transition: { duration: 0.12 } },
 };
 
 const drawerVariants = {
   hidden: { x: '100%' },
   visible: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
-  exit:    { x: '100%', transition: { duration: 0.25, ease: 'easeIn' } },
+  exit: { x: '100%', transition: { duration: 0.25, ease: 'easeIn' } },
 };
 
 const backdropVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
-  exit:    { opacity: 0 },
+  exit: { opacity: 0 },
 };
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]         = useState(false);
-  const [scrolled, setScrolled]         = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const location = useLocation();
-  const navRef   = useRef(null);
+  const navRef = useRef(null);
   const timerRef = useRef(null);
 
   /* scroll listener */
@@ -103,19 +103,18 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const openMenu  = (key) => { clearTimeout(timerRef.current); setActiveDropdown(key); };
-  const closeMenu = ()    => { timerRef.current = setTimeout(() => setActiveDropdown(null), 120); };
-  const isActive  = (to)  => location.pathname === to || location.pathname.startsWith(to + '/');
+  const openMenu = (key) => { clearTimeout(timerRef.current); setActiveDropdown(key); };
+  const closeMenu = () => { timerRef.current = setTimeout(() => setActiveDropdown(null), 120); };
+  const isActive = (to) => location.pathname === to || location.pathname.startsWith(to + '/');
 
   return (
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-xl shadow-black/5'
-            : 'bg-white'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-xl shadow-black/5'
+          : 'bg-white'
+          }`}
       >
         {/* ── Top bar ─────────────────────────── */}
         <div className="bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] text-white py-1.5 sm:py-2">
@@ -147,7 +146,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
               <img
-                src="https://reviraltechnology.com/wp-content/uploads/al_opt_content/IMAGE/reviraltechnology.com/storage/2026/02/cropped-cropped-reviral_Logo.png.bv.webp?bv_host=reviraltechnology.com"
+                src="https://res.cloudinary.com/duhouukqs/image/upload/v1774392570/cropped-reviral_Logo_gyd70h.webp"
                 alt="Reviral Technology"
                 className="h-9 w-auto object-contain"
                 onError={(e) => {
@@ -410,8 +409,8 @@ export default function Navbar() {
               </div>
 
               <NavItem to="/portfolio" label="Our Work" isActive={isActive('/portfolio')} />
-              <NavItem to="/career"    label="Career"   isActive={isActive('/career')} />
-              <NavItem to="/contact"   label="Contact"  isActive={isActive('/contact')} />
+              <NavItem to="/career" label="Career" isActive={isActive('/career')} />
+              <NavItem to="/contact" label="Contact" isActive={isActive('/contact')} />
             </div>
 
             {/* CTA + hamburger */}
@@ -481,7 +480,7 @@ export default function Navbar() {
               <div className="bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] px-5 pt-8 pb-6 flex-shrink-0">
                 <div className="flex items-center justify-between mb-6">
                   <img
-                    src="https://reviraltechnology.com/wp-content/uploads/al_opt_content/IMAGE/reviraltechnology.com/storage/2026/02/cropped-cropped-reviral_Logo.png.bv.webp?bv_host=reviraltechnology.com"
+                    src="https://res.cloudinary.com/duhouukqs/image/upload/v1774392570/cropped-reviral_Logo_gyd70h.webp"
                     alt="Reviral Technology"
                     className="h-9 object-contain brightness-0 invert"
                     onError={(e) => {
@@ -573,10 +572,10 @@ export default function Navbar() {
                   ))}
                 </DrawerAccordion>
 
-                <DrawerLink to="/portfolio" label="🖼️ Our Work"  isActive={isActive('/portfolio')} />
-                <DrawerLink to="/career"    label="💼 Career"    isActive={isActive('/career')} />
-                <DrawerLink to="/blog"      label="📝 Blog"      isActive={isActive('/blog')} />
-                <DrawerLink to="/contact"   label="📩 Contact"   isActive={isActive('/contact')} />
+                <DrawerLink to="/portfolio" label="🖼️ Our Work" isActive={isActive('/portfolio')} />
+                <DrawerLink to="/career" label="💼 Career" isActive={isActive('/career')} />
+                <DrawerLink to="/blog" label="📝 Blog" isActive={isActive('/blog')} />
+                <DrawerLink to="/contact" label="📩 Contact" isActive={isActive('/contact')} />
               </div>
 
               {/* Drawer footer CTA */}
@@ -605,9 +604,8 @@ function NavItem({ to, label, isActive, exact }) {
   return (
     <Link
       to={to}
-      className={`relative px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg group ${
-        active ? 'text-primary' : 'text-gray-600 hover:text-primary'
-      }`}
+      className={`relative px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg group ${active ? 'text-primary' : 'text-gray-600 hover:text-primary'
+        }`}
     >
       {label}
       <span className={`absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-primary transition-all duration-300 ${active ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-100'}`} />
@@ -618,9 +616,8 @@ function NavItem({ to, label, isActive, exact }) {
 function NavItemBtn({ label, open, active }) {
   return (
     <button
-      className={`relative px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg flex items-center gap-1 group ${
-        open || active ? 'text-primary' : 'text-gray-600 hover:text-primary'
-      }`}
+      className={`relative px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg flex items-center gap-1 group ${open || active ? 'text-primary' : 'text-gray-600 hover:text-primary'
+        }`}
     >
       {label}
       <FaChevronDown className={`text-[10px] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
@@ -633,9 +630,8 @@ function DrawerLink({ to, label, isActive }) {
   return (
     <Link
       to={to}
-      className={`flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-        isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
-      }`}
+      className={`flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all ${isActive ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+        }`}
     >
       {label}
     </Link>

@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center mb-5">
               <img
-                src="https://reviraltechnology.com/wp-content/uploads/al_opt_content/IMAGE/reviraltechnology.com/storage/2026/02/cropped-cropped-reviral_Logo.png.bv.webp?bv_host=reviraltechnology.com"
+                src="https://res.cloudinary.com/duhouukqs/image/upload/v1774392570/cropped-reviral_Logo_gyd70h.webp"
                 alt="Reviral Technology"
                 className="h-10 w-auto object-contain brightness-0 invert"
                 onError={(e) => {
@@ -58,7 +58,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6 text-gray-400">
-              We are a leading IT company committed to providing comprehensive digital 
+              We are a leading IT company committed to providing comprehensive digital
               solutions to enhance your online presence and grow your business.
             </p>
             <div className="flex gap-3">
