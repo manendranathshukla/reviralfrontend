@@ -43,7 +43,7 @@ export default function Hero() {
         className="absolute bottom-20 left-1/4 w-96 h-96 bg-primary-light/30 rounded-full blur-3xl pointer-events-none"
       />
 
-      <div className="container-custom relative z-10 py-10 lg:py-16">
+      <div className="container-custom relative z-10 pt-10 pb-28 lg:pt-16 lg:pb-36 xl:pb-40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
 
           {/* Left: Text */}
@@ -190,8 +190,8 @@ export default function Hero() {
       </div>
 
       {/* Curved bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 sm:h-24 lg:h-32 block">
           <path d="M0 100 L0 60 Q360 0 720 30 Q1080 60 1440 20 L1440 100 Z" fill="white" />
         </svg>
       </div>

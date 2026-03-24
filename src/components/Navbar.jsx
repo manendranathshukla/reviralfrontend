@@ -42,9 +42,9 @@ const pricingLinks = [
 
 /* ── Animation variants ────────────────────────────────────── */
 const megaVariants = {
-  hidden: { opacity: 0, y: -12, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.22, ease: 'easeOut' } },
-  exit:    { opacity: 0, y: -8, scale: 0.98, transition: { duration: 0.15 } },
+  hidden: { opacity: 0, y: -12, scale: 0.98, x: '-50%' },
+  visible: { opacity: 1, y: 0, scale: 1, x: '-50%', transition: { duration: 0.22, ease: 'easeOut' } },
+  exit:    { opacity: 0, y: -8, scale: 0.98, x: '-50%', transition: { duration: 0.15 } },
 };
 
 const dropdownVariants = {
@@ -118,18 +118,18 @@ export default function Navbar() {
         }`}
       >
         {/* ── Top bar ─────────────────────────── */}
-        <div className="bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] text-white py-1.5 hidden sm:block">
-          <div className="container-custom flex justify-between items-center text-xs">
-            <span className="text-blue-200/80 font-medium">
+        <div className="bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] text-white py-1.5 sm:py-2">
+          <div className="container-custom flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs gap-1.5 md:gap-0">
+            <span className="text-blue-200/80 font-medium text-center">
               🇳🇵 Welcome to Reviral Technology — Bhairahawa, Nepal
             </span>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center flex-wrap justify-center gap-x-3 gap-y-1 sm:gap-4">
               <a href="tel:+9779811418243" className="flex items-center gap-1.5 hover:text-accent transition-colors font-semibold">
-                <FaPhone className="text-[10px]" /> +977-9811418243
+                <FaPhone className="text-[9px] sm:text-[10px]" /> <span className="tracking-wider">+977-9811418243</span>
               </a>
-              <span className="text-white/30">|</span>
+              <span className="text-white/30 hidden sm:inline">|</span>
               <a href="mailto:info@reviraltechnology.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-                <FaEnvelope className="text-[10px]" /> info@reviraltechnology.com
+                <FaEnvelope className="text-[9px] sm:text-[10px]" /> <span className="tracking-wide">info@reviraltechnology.com</span>
               </a>
             </div>
           </div>
@@ -137,7 +137,12 @@ export default function Navbar() {
 
         {/* ── Main nav ────────────────────────── */}
         <div className="container-custom">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16 relative">
+
+            {/* Mobile Center Title */}
+            <span className="absolute left-1/2 -translate-x-1/2 lg:hidden font-black text-primary text-2xl tracking-tight">
+              Reviral
+            </span>
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
@@ -239,7 +244,7 @@ export default function Navbar() {
                       initial="hidden" animate="visible" exit="exit"
                       onMouseEnter={() => openMenu('services')}
                       onMouseLeave={closeMenu}
-                      className="fixed left-1/2 -translate-x-1/2 mt-1 z-50 overflow-hidden"
+                      className="fixed left-1/2 mt-1 z-50 overflow-hidden"
                       style={{
                         top: 'calc(var(--nav-height, 104px))',
                         width: 'min(860px, 95vw)',
