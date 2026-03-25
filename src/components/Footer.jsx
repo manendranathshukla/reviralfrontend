@@ -63,9 +63,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: FaFacebook, href: 'https://api.reviraltechnology.com/api/partners/' },
+                { Icon: FaFacebook, href: 'https://www.facebook.com/reviraltechnology' },
                 // { Icon: FaTwitter, href: '#' },
-                { Icon: FaInstagram, href: 'https://api.reviraltechnology.com/api/partners/' },
+                { Icon: FaInstagram, href: 'https://www.instagram.com/reviraltechnology/?hl=en' },
                 // { Icon: FaLinkedin, href: '#' },
                 // { Icon: FaYoutube, href: '#' },
                 { Icon: FaTiktok, href: 'https://www.tiktok.com/@reviraltech?is_from_webapp=1&sender_device=pc' },
