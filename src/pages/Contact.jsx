@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle,
-  FaClock, FaWhatsapp, FaFacebook, FaLinkedin, FaArrowRight,
+  FaClock, FaWhatsapp, FaFacebook, FaLinkedin, FaArrowRight, FaTiktok,
   FaPaperPlane,
 } from 'react-icons/fa';
 import SafeLottie from '../components/SafeLottie';
 import { submitContact } from '../api';
 
-const LOTTIE_CONTACT  = 'https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json';
+const LOTTIE_CONTACT = 'https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json';
 const LOTTIE_FALLBACK = 'https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json';
 
 const serviceOptions = [
@@ -34,8 +34,8 @@ const contactInfo = [
 
 const socials = [
   { icon: FaWhatsapp, label: 'WhatsApp', href: 'https://wa.me/9779811418243', color: 'hover:text-green-400 hover:border-green-400/40' },
-  { icon: FaFacebook, label: 'Facebook', href: '#', color: 'hover:text-blue-400 hover:border-blue-400/40' },
-  { icon: FaLinkedin, label: 'LinkedIn', href: '#', color: 'hover:text-sky-400 hover:border-sky-400/40' },
+  { icon: FaFacebook, label: 'Facebook', href: 'https://www.facebook.com/reviraltechnology', color: 'hover:text-blue-400 hover:border-blue-400/40' },
+  { icon: FaTiktok, label: 'Tiktok', href: 'https://www.tiktok.com/@reviraltech?is_from_webapp=1&sender_device=pc', color: 'hover:text-sky-400 hover:border-sky-400/40' },
 ];
 
 const inputCls = 'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:border-blue-400/60 focus:bg-white/10 transition-all duration-300';
@@ -104,7 +104,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-md">
-              Have a project in mind? We'd love to hear about it. Drop us a message and 
+              Have a project in mind? We'd love to hear about it. Drop us a message and
               our team will get back to you within 2 hours.
             </p>
 

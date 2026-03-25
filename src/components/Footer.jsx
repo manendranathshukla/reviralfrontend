@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   FaFacebook, FaTwitter, FaInstagram, FaLinkedin,
-  FaYoutube, FaPhone, FaEnvelope, FaMapMarkerAlt
+  FaYoutube, FaTiktok, FaPhone, FaEnvelope, FaMapMarkerAlt
 } from 'react-icons/fa';
 
 const devServices = [
@@ -63,11 +63,12 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: FaFacebook, href: '#' },
-                { Icon: FaTwitter, href: '#' },
-                { Icon: FaInstagram, href: '#' },
-                { Icon: FaLinkedin, href: '#' },
-                { Icon: FaYoutube, href: '#' },
+                { Icon: FaFacebook, href: 'https://api.reviraltechnology.com/api/partners/' },
+                // { Icon: FaTwitter, href: '#' },
+                { Icon: FaInstagram, href: 'https://api.reviraltechnology.com/api/partners/' },
+                // { Icon: FaLinkedin, href: '#' },
+                // { Icon: FaYoutube, href: '#' },
+                { Icon: FaTiktok, href: 'https://www.tiktok.com/@reviraltech?is_from_webapp=1&sender_device=pc' },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
