@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import QuickEnquiryModal from './components/QuickEnquiryModal';
 import UnderMaintenance from './pages/UnderMaintenance';
+import ScrollToTop from './components/ScrollToTop';
 
 // === TOGGLE THIS FOR MAINTENANCE MODE ===
 const IS_UNDER_MAINTENANCE = false;
@@ -48,7 +49,7 @@ function PageLoader() {
 
         {/* Text */}
         <div className="flex flex-col items-center gap-2">
-          <motion.span 
+          <motion.span
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="text-[10px] sm:text-xs font-black tracking-[0.3em] sm:tracking-[0.4em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
@@ -81,6 +82,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar onEnquiry={() => setModalOpen(true)} />
         <main className="flex-1">

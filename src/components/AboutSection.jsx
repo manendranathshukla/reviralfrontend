@@ -14,8 +14,8 @@ const highlights = [
 ];
 
 const badges = [
-  { icon: FaTrophy, value: '150+', label: 'Projects Done', color: 'bg-yellow-400' },
-  { icon: FaUsers, value: '25+', label: 'Team Members', color: 'bg-blue-500' },
+  { icon: FaTrophy, value: '20+', label: 'Projects Done', color: 'bg-yellow-400' },
+  { icon: FaUsers, value: '2+', label: 'Team Members', color: 'bg-blue-500' },
   { icon: FaLightbulb, value: '5+', label: 'Years Exp.', color: 'bg-accent' },
 ];
 
@@ -86,13 +86,13 @@ export default function AboutSection() {
               <span className="text-accent">Committed to Excellence</span>
             </h2>
             <p className="text-gray-600 mb-5 leading-relaxed text-lg">
-              We are committed to providing comprehensive digital solutions to enhance your 
-              online presence. Let's join hands and work together to take your brand to the 
+              We are committed to providing comprehensive digital solutions to enhance your
+              online presence. Let's join hands and work together to take your brand to the
               next level with the best IT services.
             </p>
             <p className="text-gray-500 mb-8 leading-relaxed">
-              Our team of experienced professionals specializes in web development, mobile 
-              applications, digital marketing, and creative design — delivering results 
+              Our team of experienced professionals specializes in web development, mobile
+              applications, digital marketing, and creative design — delivering results
               that exceed expectations every time.
             </p>
 

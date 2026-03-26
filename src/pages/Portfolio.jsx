@@ -8,7 +8,7 @@ import {
 import SafeLottie from '../components/SafeLottie';
 import { fetchPortfolio } from '../api';
 
-const LOTTIE_WORK     = 'https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json';
+const LOTTIE_WORK = 'https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json';
 const LOTTIE_FALLBACK = 'https://assets7.lottiefiles.com/packages/lf20_w51pcehl.json';
 
 const defaultPortfolio = [
@@ -87,7 +87,7 @@ const categoryConfig = {
 };
 
 const heroStats = [
-  { value: '150+', label: 'Projects Delivered', emoji: '🚀' },
+  { value: '20+', label: 'Projects Delivered', emoji: '🚀' },
   { value: '8+', label: 'Industries', emoji: '🌐' },
   { value: '98%', label: 'Client Satisfaction', emoji: '⭐' },
   { value: '5+', label: 'Years Experience', emoji: '📅' },
@@ -104,7 +104,7 @@ export default function Portfolio() {
         const d = r.data?.results || r.data;
         if (d?.length) setProjects(d);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const categories = ['All', ...new Set(projects.map(p => p.category))];
@@ -146,7 +146,7 @@ export default function Portfolio() {
             </h1>
 
             <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-lg">
-              From e-commerce platforms to mobile apps and digital marketing campaigns — 
+              From e-commerce platforms to mobile apps and digital marketing campaigns —
               explore how we've helped businesses across Nepal and beyond grow digitally.
             </p>
 
@@ -231,11 +231,10 @@ export default function Portfolio() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setFilter(cat)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
-                    filter === cat
+                  className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${filter === cat
                       ? 'bg-gradient-to-r from-primary to-blue-600 text-white shadow-lg shadow-primary/30'
                       : 'glass text-white/60 hover:text-white hover:bg-white/15'
-                  }`}
+                    }`}
                 >
                   <span>{config.emoji}</span>
                   {cat}

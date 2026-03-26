@@ -8,7 +8,7 @@ import {
   FaMousePointer, FaBullhorn, FaEnvelope,
   FaWhatsapp, FaChevronRight, FaArrowRight,
   FaUsers, FaInfoCircle, FaTasks, FaCalendarAlt,
-  FaTags,
+  FaTags, FaFacebook, FaInstagram, FaTiktok,
 } from 'react-icons/fa';
 
 /* ── Data ──────────────────────────────────────────────────── */
@@ -117,10 +117,10 @@ export default function Navbar() {
           }`}
       >
         {/* ── Top bar ─────────────────────────── */}
-        <div className="bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] text-white py-1.5 sm:py-2">
+        <div className="hidden md:block bg-gradient-to-r from-[#0a1f5c] to-[#1a3c8f] text-white py-1.5 sm:py-2">
           <div className="container-custom flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs gap-1.5 md:gap-0">
-            <span className="text-blue-200/80 font-medium text-center">
-              🇳🇵 Welcome to Reviral Technology — Bhairahawa, Nepal
+            <span className="text-blue-200/80 font-medium text-center flex items-center justify-center gap-1.5">
+              <img src="https://flagcdn.com/w20/np.png" alt="Nepal Flag" className="w-3.5 h-auto rounded-[1px]" /> Welcome to Reviral Technology — Bhairahawa, Nepal
             </span>
             <div className="flex items-center flex-wrap justify-center gap-x-3 gap-y-1 sm:gap-4">
               <a href="tel:+9779811418243" className="flex items-center gap-1.5 hover:text-accent transition-colors font-semibold">
@@ -130,6 +130,18 @@ export default function Navbar() {
               <a href="mailto:info@reviraltechnology.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
                 <FaEnvelope className="text-[9px] sm:text-[10px]" /> <span className="tracking-wide">info@reviraltechnology.com</span>
               </a>
+              <span className="text-white/30 hidden sm:inline">|</span>
+              <div className="flex items-center gap-3">
+                <a href="https://www.facebook.com/reviraltechnology" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="Facebook">
+                  <FaFacebook className="text-[11px] sm:text-xs" />
+                </a>
+                <a href="https://www.instagram.com/reviraltechnology/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="Instagram">
+                  <FaInstagram className="text-[11px] sm:text-xs" />
+                </a>
+                <a href="https://www.tiktok.com/@reviraltech?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="TikTok">
+                  <FaTiktok className="text-[11px] sm:text-xs" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -139,8 +151,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 relative">
 
             {/* Mobile Center Title */}
-            <span className="absolute left-1/2 -translate-x-1/2 lg:hidden font-black text-primary text-2xl tracking-tight">
-              Reviral
+            <span className="absolute left-1/2 -translate-x-1/2 lg:hidden font-black text-primary text-xl sm:text-2xl tracking-tight whitespace-nowrap">
+              Reviral Technology
             </span>
 
             {/* Logo */}

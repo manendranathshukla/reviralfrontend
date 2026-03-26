@@ -1,32 +1,41 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   FaCheckCircle, FaUsers, FaLightbulb, FaHandshake,
   FaArrowRight, FaRocket, FaStar, FaCode, FaGlobe,
-  FaAward, FaHistory,
+  FaAward, FaHistory, FaLinkedin, FaTwitter, FaGithub,
 } from 'react-icons/fa';
 import SafeLottie from '../components/SafeLottie';
 import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
+import { fetchTeam } from '../api';
 
-const LOTTIE_TEAM    = 'https://assets7.lottiefiles.com/packages/lf20_w51pcehl.json';
+const LOTTIE_TEAM = 'https://assets7.lottiefiles.com/packages/lf20_w51pcehl.json';
 const LOTTIE_MISSION = 'https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json';
 const LOTTIE_FALLBACK = 'https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json';
 
 const values = [
-  { icon: FaLightbulb, title: 'Innovation', emoji: '💡',
+  {
+    icon: FaLightbulb, title: 'Innovation', emoji: '💡',
     desc: 'We push boundaries and embrace new technologies to deliver cutting-edge digital solutions.',
-    gradient: 'from-yellow-400 to-orange-500', glow: 'shadow-yellow-400/20' },
-  { icon: FaUsers, title: 'Collaboration', emoji: '🤝',
+    gradient: 'from-yellow-400 to-orange-500', glow: 'shadow-yellow-400/20'
+  },
+  {
+    icon: FaUsers, title: 'Collaboration', emoji: '🤝',
     desc: 'We work closely with clients as true partners, ensuring transparent communication throughout.',
-    gradient: 'from-blue-500 to-cyan-500', glow: 'shadow-blue-500/20' },
-  { icon: FaHandshake, title: 'Integrity', emoji: '🛡️',
+    gradient: 'from-blue-500 to-cyan-500', glow: 'shadow-blue-500/20'
+  },
+  {
+    icon: FaHandshake, title: 'Integrity', emoji: '🛡️',
     desc: 'We build long-term relationships based on trust, honesty, and delivering on every promise.',
-    gradient: 'from-green-500 to-emerald-600', glow: 'shadow-green-500/20' },
-  { icon: FaCheckCircle, title: 'Quality', emoji: '⭐',
+    gradient: 'from-green-500 to-emerald-600', glow: 'shadow-green-500/20'
+  },
+  {
+    icon: FaCheckCircle, title: 'Quality', emoji: '⭐',
     desc: 'We maintain the highest standards in everything we do, from code to client service.',
-    gradient: 'from-purple-500 to-pink-600', glow: 'shadow-purple-500/20' },
+    gradient: 'from-purple-500 to-pink-600', glow: 'shadow-purple-500/20'
+  },
 ];
 
 const milestones = [
@@ -39,8 +48,8 @@ const milestones = [
 
 const heroStats = [
   { value: '5+', label: 'Years Experience', icon: '📅' },
-  { value: '150+', label: 'Projects Done', icon: '🚀' },
-  { value: '25+', label: 'Team Members', icon: '👥' },
+  { value: '20+', label: 'Projects Done', icon: '🚀' },
+  { value: '2+', label: 'Team Members', icon: '👥' },
   { value: '98%', label: 'Satisfaction Rate', icon: '⭐' },
 ];
 
@@ -48,6 +57,19 @@ export default function About() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
+  const [team, setTeam] = useState([]);
+  const [loadingTeam, setLoadingTeam] = useState(true);
+
+  useEffect(() => {
+    fetchTeam()
+      .then((res) => {
+        const data = res.data?.results || res.data;
+        if (Array.isArray(data)) setTeam(data);
+      })
+      .catch((err) => console.error("Error fetching team:", err))
+      .finally(() => setLoadingTeam(false));
+  }, []);
 
   return (
     <div className="pt-24 overflow-x-hidden">
@@ -94,7 +116,7 @@ export default function About() {
             </h1>
 
             <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
-              Based in Bhairahawa, Nepal — we are a passionate team of developers, designers, 
+              Based in Bhairahawa, Nepal — we are a passionate team of developers, designers,
               and marketers dedicated to helping businesses grow through technology.
             </p>
 
@@ -128,7 +150,7 @@ export default function About() {
             {[
               { label: 'Bhairahawa, Nepal 🇳🇵', top: '5%', left: '-5%', delay: 0.5 },
               { label: '5 Star Rated ⭐', top: '15%', right: '-5%', delay: 0.7 },
-              { label: '150+ Projects 🚀', bottom: '15%', left: '-8%', delay: 0.9 },
+              { label: '20+ Projects 🚀', bottom: '15%', left: '-8%', delay: 0.9 },
             ].map((tag) => (
               <motion.div
                 key={tag.label}
@@ -180,18 +202,18 @@ export default function About() {
               <p className="section-subtitle">Our Mission</p>
               <h2 className="section-title mb-6">Driving Digital Success<br />For Every Business</h2>
               <p className="text-gray-500 leading-relaxed mb-5">
-                Reviral Technology was founded with a simple but powerful mission: to help businesses 
+                Reviral Technology was founded with a simple but powerful mission: to help businesses
                 of all sizes harness the power of technology and digital marketing to achieve their goals.
               </p>
               <p className="text-gray-500 leading-relaxed mb-8">
-                Our team of experienced professionals specializes in web development, mobile applications, 
+                Our team of experienced professionals specializes in web development, mobile applications,
                 digital marketing, and creative design — delivering results that exceed expectations.
               </p>
 
               <div className="space-y-3">
                 {[
                   '🏆 Expert team with 5+ years of industry experience',
-                  '📦 Over 150 successful projects delivered',
+                  '📦 Over 20+ successful projects delivered',
                   '😊 Client satisfaction rate of 98%',
                   '🔔 Round-the-clock support and maintenance',
                 ].map((item) => (
@@ -224,7 +246,7 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   {[
                     { value: '5+', label: 'Years Experience', emoji: '📅' },
-                    { value: '150+', label: 'Projects Done', emoji: '🚀' },
+                    { value: '20+', label: 'Projects Done', emoji: '🚀' },
                     { value: '25+', label: 'Team Members', emoji: '👥' },
                     { value: '98%', label: 'Satisfaction', emoji: '⭐' },
                   ].map((stat) => (
@@ -242,7 +264,7 @@ export default function About() {
       </section>
 
       {/* ── CORE VALUES ── */}
-      <section className="py-24 relative overflow-hidden bg-[#060e2b]">
+      <section id="how-we-work" className="py-24 relative overflow-hidden bg-[#060e2b]">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl" />
@@ -296,7 +318,7 @@ export default function About() {
       </section>
 
       {/* ── COMPANY JOURNEY TIMELINE ── */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section id="journey" className="py-24 bg-white relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
         <div className="container-custom relative z-10">
           <motion.div
@@ -366,6 +388,94 @@ export default function About() {
           >
             <FaHistory className="text-primary/20 text-8xl mx-auto" />
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── OUR TEAM ── */}
+      <section id="team" className="py-24 bg-gray-50 relative overflow-hidden border-b border-gray-100">
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-primary text-xs font-bold uppercase tracking-[0.25em] mb-3 flex items-center justify-center gap-2">
+              <span className="w-5 h-0.5 bg-primary rounded-full" /> Meet the Experts <span className="w-5 h-0.5 bg-primary rounded-full" />
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-dark mb-4">Our Brilliant <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Team</span></h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              Driven by passion and expertise, we are dedicated to transforming your digital vision into reality.
+            </p>
+          </motion.div>
+
+          <AnimatePresence mode="wait">
+            {loadingTeam ? (
+              <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+              </motion.div>
+            ) : team.length === 0 ? (
+              <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 text-gray-500">
+                No team members found. Check back soon!
+              </motion.div>
+            ) : (
+              <motion.div
+                key="grid"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+                }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              >
+                {team.map((member) => (
+                  <motion.div
+                    key={member.id}
+                    variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+                    className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="relative h-64 w-full overflow-hidden bg-gray-100">
+                      {member.image ? (
+                        <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      ) : (
+                        <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-primary/10 to-accent/10">
+                          <FaUsers className="text-5xl text-primary/30" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f5c]/90 via-[#0a1f5c]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                        <div className="flex gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-blue-600 flex items-center justify-center backdrop-blur-md transition-colors">
+                              <FaLinkedin className="text-lg" />
+                            </a>
+                          )}
+                          {member.twitter && (
+                            <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-blue-400 flex items-center justify-center backdrop-blur-md transition-colors">
+                              <FaTwitter className="text-lg" />
+                            </a>
+                          )}
+                          {member.github && (
+                            <a href={member.github} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-gray-900 flex items-center justify-center backdrop-blur-md transition-colors">
+                              <FaGithub className="text-lg" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6 text-center">
+                      <h3 className="text-xl font-bold text-dark group-hover:text-primary transition-colors">{member.name}</h3>
+                      <p className="text-sm font-semibold text-accent mb-3">{member.designation || member.role || 'Team Member'}</p>
+                      {member.bio && (
+                        <p className="text-xs text-gray-500 line-clamp-3 leading-relaxed">{member.bio}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

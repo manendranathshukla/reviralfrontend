@@ -40,18 +40,15 @@ export default function Partners() {
               transition={{ duration: 0.4, delay: i * 0.04 }}
               className="flex flex-col items-center gap-3 group"
             >
-              <a
-                href={p.website || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-24 h-24 rounded-2xl flex items-center justify-center p-3 font-bold text-xl group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 border border-gray-100 bg-white"
+              <div
+                className="relative w-24 h-24 rounded-2xl flex items-center justify-center p-3 font-bold text-xl border border-gray-100 bg-white shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-105 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] group-hover:border-primary/20 cursor-default"
               >
                 <img
                   src={p.logo}
                   alt={p.name}
-                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full object-contain transition-all duration-500 ease-out group-hover:drop-shadow-md pointer-events-none"
                 />
-              </a>
+              </div>
               <span className="text-xs text-gray-500 font-medium group-hover:text-gray-900 transition-colors text-center leading-tight">
                 {p.name}
               </span>

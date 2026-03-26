@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaPlay, FaCheckCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import SafeLottie from './SafeLottie';
+import { fetchSiteStats } from '../api';
 
 // assets9 & assets2 are confirmed working CDN subdomains
 const LOTTIE_TECH_PRIMARY  = 'https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json';
@@ -14,6 +16,29 @@ const highlights = [
 ];
 
 export default function Hero() {
+  const [stats, setStats] = useState({
+    years: '5+',
+    projects: '150+',
+    satisfaction: '98%',
+    rating: '5.0',
+    team: '25+'
+  });
+
+  useEffect(() => {
+    fetchSiteStats().then((res) => {
+      const d = res.data;
+      if (d) {
+        setStats({
+          years: d.years_experience ? `${d.years_experience}+` : '5+',
+          projects: d.projects_completed ? `${d.projects_completed}+` : '150+',
+          satisfaction: d.client_satisfaction ? `${d.client_satisfaction}%` : '98%',
+          rating: d.client_rating ? String(d.client_rating) : '5.0',
+          team: d.team_members ? `${d.team_members}+` : '25+'
+        });
+      }
+    }).catch(() => {});
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16 sm:pt-24 lg:pt-[104px]">
       {/* Layered background */}
@@ -114,9 +139,9 @@ export default function Hero() {
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/15">
               {[
-                { value: '5+', label: 'Years Experience', color: 'text-yellow-400' },
-                { value: '150+', label: 'Projects Done', color: 'text-green-400' },
-                { value: '98%', label: 'Client Satisfaction', color: 'text-accent' },
+                { value: stats.years, label: 'Years Experience', color: 'text-yellow-400' },
+                { value: stats.projects, label: 'Projects Done', color: 'text-green-400' },
+                { value: stats.satisfaction, label: 'Client Satisfaction', color: 'text-accent' },
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
@@ -150,7 +175,7 @@ export default function Hero() {
               >
                 <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">🚀</div>
                 <div>
-                  <div className="text-xl font-black text-dark">150+</div>
+                  <div className="text-xl font-black text-dark">{stats.projects}</div>
                   <div className="text-xs text-gray-500">Projects Done</div>
                 </div>
               </motion.div>
@@ -162,7 +187,7 @@ export default function Hero() {
               >
                 <div className="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center text-xl">⭐</div>
                 <div>
-                  <div className="text-xl font-black text-dark">5.0</div>
+                  <div className="text-xl font-black text-dark">{stats.rating}</div>
                   <div className="text-xs text-gray-500">Client Rating</div>
                 </div>
               </motion.div>
@@ -172,7 +197,7 @@ export default function Hero() {
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                 className="absolute top-1/2 -left-8 -translate-y-1/2 hidden md:block bg-primary rounded-2xl shadow-2xl p-4 text-white text-center"
               >
-                <div className="text-2xl font-black">25+</div>
+                <div className="text-2xl font-black">{stats.team}</div>
                 <div className="text-xs text-blue-200">Team</div>
               </motion.div>
 
