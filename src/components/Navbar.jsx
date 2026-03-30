@@ -373,7 +373,7 @@ export default function Navbar() {
               </div>
 
               {/* Pricing dropdown */}
-              <div
+              {/* <div
                 className="relative"
                 onMouseEnter={() => openMenu('pricing')}
                 onMouseLeave={closeMenu}
@@ -418,7 +418,7 @@ export default function Navbar() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div> */}
 
               <NavItem to="/portfolio" label="Our Work" isActive={isActive('/portfolio')} />
               <NavItem to="/career" label="Career" isActive={isActive('/career')} />

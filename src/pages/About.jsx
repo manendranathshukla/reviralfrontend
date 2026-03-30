@@ -47,9 +47,9 @@ const milestones = [
 ];
 
 const heroStats = [
-  { value: '5+', label: 'Years Experience', icon: '📅' },
-  { value: '20+', label: 'Projects Done', icon: '🚀' },
-  { value: '2+', label: 'Team Members', icon: '👥' },
+  { value: '2+', label: 'Years Experience', icon: '📅' },
+  { value: '50+', label: 'Projects Done', icon: '🚀' },
+  { value: '5+', label: 'Team Members', icon: '👥' },
   { value: '98%', label: 'Satisfaction Rate', icon: '⭐' },
 ];
 
@@ -150,7 +150,7 @@ export default function About() {
             {[
               { label: 'Bhairahawa, Nepal 🇳🇵', top: '5%', left: '-5%', delay: 0.5 },
               { label: '5 Star Rated ⭐', top: '15%', right: '-5%', delay: 0.7 },
-              { label: '20+ Projects 🚀', bottom: '15%', left: '-8%', delay: 0.9 },
+              { label: '50+ Projects 🚀', bottom: '15%', left: '-8%', delay: 0.9 },
             ].map((tag) => (
               <motion.div
                 key={tag.label}
@@ -212,8 +212,8 @@ export default function About() {
 
               <div className="space-y-3">
                 {[
-                  '🏆 Expert team with 5+ years of industry experience',
-                  '📦 Over 20+ successful projects delivered',
+                  '🏆 Expert team with 2+ years of industry experience',
+                  '📦 Over 50+ successful projects delivered',
                   '😊 Client satisfaction rate of 98%',
                   '🔔 Round-the-clock support and maintenance',
                 ].map((item) => (
@@ -245,9 +245,9 @@ export default function About() {
 
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   {[
-                    { value: '5+', label: 'Years Experience', emoji: '📅' },
-                    { value: '20+', label: 'Projects Done', emoji: '🚀' },
-                    { value: '25+', label: 'Team Members', emoji: '👥' },
+                    { value: '2+', label: 'Years Experience', emoji: '📅' },
+                    { value: '50+', label: 'Projects Done', emoji: '🚀' },
+                    { value: '5+', label: 'Team Members', emoji: '👥' },
                     { value: '98%', label: 'Satisfaction', emoji: '⭐' },
                   ].map((stat) => (
                     <div key={stat.label} className="glass rounded-2xl p-4 text-center">
@@ -392,7 +392,7 @@ export default function About() {
       </section>
 
       {/* ── OUR TEAM ── */}
-      <section id="team" className="py-24 bg-gray-50 relative overflow-hidden border-b border-gray-100">
+      {/* <section id="team" className="py-24 bg-gray-50 relative overflow-hidden border-b border-gray-100">
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -477,7 +477,7 @@ export default function About() {
             )}
           </AnimatePresence>
         </div>
-      </section>
+      </section> */}
 
       <Stats />
       <Testimonials />

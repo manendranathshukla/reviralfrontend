@@ -87,10 +87,10 @@ const categoryConfig = {
 };
 
 const heroStats = [
-  { value: '20+', label: 'Projects Delivered', emoji: '🚀' },
+  { value: '50+', label: 'Projects Delivered', emoji: '🚀' },
   { value: '8+', label: 'Industries', emoji: '🌐' },
   { value: '98%', label: 'Client Satisfaction', emoji: '⭐' },
-  { value: '5+', label: 'Years Experience', emoji: '📅' },
+  { value: '2+', label: 'Years Experience', emoji: '📅' },
 ];
 
 export default function Portfolio() {
